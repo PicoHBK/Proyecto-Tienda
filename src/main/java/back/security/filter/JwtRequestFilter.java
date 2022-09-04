@@ -1,4 +1,4 @@
-package back.security.filtert;
+package back.security.filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

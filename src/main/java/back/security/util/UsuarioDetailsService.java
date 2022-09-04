@@ -41,13 +41,12 @@ public class UsuarioDetailsService implements UserDetailsService {
         }
 
         
-        if (rol != null){
+        if (rol.size() > 0){
             User.UserBuilder userBuilder = User.withUsername(username);
 
             String encryptedPassword = usuario.getPassword();
 
-            userBuilder.password(encryptedPassword).roles("ADMIN");
-
+            userBuilder.password(encryptedPassword).roles(rol.get(0),rol.get(1));
             return userBuilder.build();
 
         }else{

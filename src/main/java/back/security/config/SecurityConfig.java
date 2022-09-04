@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import back.security.filtert.JwtRequestFilter;
+import back.security.filter.JwtRequestFilter;
 
 
 
@@ -63,8 +63,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().disable() // (2)
         .authorizeRequests()
         .antMatchers("/cargarUsuario/**").permitAll()
-        .antMatchers("/usuario/admin/**").hasRole("ADMIN")
-        .antMatchers("/usuario/authenticate/**").permitAll()
+        .antMatchers("/test/**").hasRole("USER")
+        .antMatchers("/authenticate/**").permitAll()
         .anyRequest().authenticated()
         .and().cors()
         .and()
