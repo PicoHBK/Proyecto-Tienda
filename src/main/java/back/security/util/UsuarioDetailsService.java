@@ -34,19 +34,17 @@ public class UsuarioDetailsService implements UserDetailsService {
         Usuario usuario = usuarioSer.buscarPorUser(username);
 
         List<Rol> roles = rolSer.rolesById(usuario.getId());
-        List<String> rol = new ArrayList<String>();
+        String rol = roles.get(0).getRol();
+        String rol2 = roles.get(1).getRol();
 
-        for(Rol vr : roles) {
-            rol.add(vr.getRol());
-        }
 
         
-        if (rol.size() > 0){
+        if (rol != null){
             User.UserBuilder userBuilder = User.withUsername(username);
 
             String encryptedPassword = usuario.getPassword();
-
-            userBuilder.password(encryptedPassword).roles(rol.get(0),rol.get(1));
+            userBuilder.password(encryptedPassword).roles(rol,rol2);
+            
             return userBuilder.build();
 
         }else{
