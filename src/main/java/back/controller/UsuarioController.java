@@ -60,7 +60,7 @@ public class UsuarioController {
         rol2.setUsuario(usuario);
 
         usuarioSer.cargarUser(usuario);
-        rolSer.cargarRol(rol1);
+       // rolSer.cargarRol(rol1);
         rolSer.cargarRol(rol2);
         return ResponseEntity.ok("Cargado");
     }
@@ -106,6 +106,26 @@ public class UsuarioController {
     logger.info("Esta autenticado {}", auth.isAuthenticated());
 
     return ResponseEntity.ok("test");
+  }
+
+  @GetMapping("/test2")
+  public ResponseEntity<?> fido2(){
+    var auth =  SecurityContextHolder.getContext().getAuthentication();
+    logger.info("Datos del Usuario: {}", auth.getPrincipal());
+    logger.info("Datos de los Permisos {}", auth.getAuthorities());
+    logger.info("Esta autenticado {}", auth.isAuthenticated());
+
+    return ResponseEntity.ok("test2");
+  }
+
+  @GetMapping("/test3")
+  public ResponseEntity<?> fido3(){
+    var auth =  SecurityContextHolder.getContext().getAuthentication();
+    logger.info("Datos del Usuario: {}", auth.getPrincipal());
+    logger.info("Datos de los Permisos {}", auth.getAuthorities());
+    logger.info("Esta autenticado {}", auth.isAuthenticated());
+
+    return ResponseEntity.ok("test3");
   }
     
 }

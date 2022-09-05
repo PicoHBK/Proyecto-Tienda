@@ -34,12 +34,39 @@ public class UsuarioDetailsService implements UserDetailsService {
         Usuario usuario = usuarioSer.buscarPorUser(username);
 
         List<Rol> roles = rolSer.rolesById(usuario.getId());
-        String rol = roles.get(0).getRol();
-        String rol2 = roles.get(1).getRol();
+
+        List<String> rol = new ArrayList<String>();
+
+        for (Rol vr: roles){
+            rol.add(vr.getRol());
+        }
+
+        if(roles.size() > 1 ){
+            User.UserBuilder userBuilder = User.withUsername(username);
+
+            String encryptedPassword = usuario.getPassword();
+            userBuilder.password(encryptedPassword).roles(rol.get(0),rol.get(1));
+            
+            return userBuilder.build();
+
+        }else{
+            if (rol.size() > 0){
+                User.UserBuilder userBuilder = User.withUsername(username);
+    
+                String encryptedPassword = usuario.getPassword();
+                userBuilder.password(encryptedPassword).roles(rol.get(0));
+                
+                return userBuilder.build();
+    
+            }else{
+                throw new UsernameNotFoundException(username);
+            }
+            
+        }
 
 
         
-        if (rol != null){
+       /*  if (rol != null){
             User.UserBuilder userBuilder = User.withUsername(username);
 
             String encryptedPassword = usuario.getPassword();
@@ -49,7 +76,7 @@ public class UsuarioDetailsService implements UserDetailsService {
 
         }else{
             throw new UsernameNotFoundException(username);
-        }
+        }*/
 
     }
     
