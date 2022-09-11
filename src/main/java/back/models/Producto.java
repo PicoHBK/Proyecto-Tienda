@@ -34,6 +34,13 @@ public class Producto {
     @OneToOne(mappedBy = "producto")
     @JsonIgnore
     private FileDB image;
+    @Column(name = "activo", columnDefinition =  "boolean default false")
+    private boolean activo;
+
+    
+    
+    
+    
     public long getId() {
         return id;
     }
