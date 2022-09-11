@@ -42,4 +42,8 @@ public class ProductoSerImp implements ProductoSer{
         return productoRepo.findByNombreIsContaining(nombreLike);
     }
     
+    // PARA TEST IGNORAR
+    public ProductoSerImp (ProductoRepo repo){
+        this.productoRepo = repo;
+    }
 }
