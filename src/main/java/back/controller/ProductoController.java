@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import back.dto.ResponseDTO;
 import back.images.message.ResponseMessage;
 import back.images.model.FileDB;
+import back.images.repository.FileDBRepository;
 import back.images.service.FileStorageService;
 import back.models.Producto;
 import back.service.ProductoSer;
@@ -38,6 +40,10 @@ public class ProductoController {
     @Autowired
     private ProductoSer productoSer;
 
+    //test
+    @Autowired
+    FileDBRepository dbRepository;
+
     
     
 
@@ -52,6 +58,11 @@ public class ProductoController {
     }catch (Exception e) {
         return ResponseEntity.ok(e.getMessage());
     }
+  }
+  // PRUEVAS DE CONSULTAS JOINNERS FUNIONA!!!!
+  @GetMapping("/joinners")
+  ResponseEntity<List<ResponseDTO>> info(/*@PathVariable long id*/){
+    return ResponseEntity.ok(dbRepository.info());
   }
   
   
