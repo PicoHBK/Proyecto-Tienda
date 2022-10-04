@@ -2,6 +2,10 @@ package back.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import back.dto.ResListImgDTO;
 import back.models.Producto;
 
 public interface ProductoSer {
@@ -15,6 +19,19 @@ public interface ProductoSer {
 
     public void borrarProducto(long id);
 
+
+    //PAGINACION
+    public List<Producto> getProductosPage(int pageNumber);
+
+    //TEST
+    public List<ResListImgDTO> laverdad();
+
+    public List<ResListImgDTO> laVerdadPageable(int pageNumber);
+
+
+    //BUSQUEDA LIKE PAGINADO
+
+    public List<ResListImgDTO> busquedaLikePaginado(String name, int page);
     
 
 }

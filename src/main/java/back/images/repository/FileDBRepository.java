@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import back.dto.ResImgIdDTO;
+import back.dto.ResListImgDTO;
 import back.dto.ResponseDTO;
 import back.images.model.FileDB;
 
@@ -27,6 +29,16 @@ public interface FileDBRepository extends JpaRepository<FileDB,String>{
     
     @Query("SELECT new back.dto.ResponseDTO(f.type , p.nombre) FROM FileDB f JOIN f.producto p")
     List<ResponseDTO> info();
+
+    //TESTEANDO
+    @Query("SELECT new back.dto.ResImgIdDTO(f.id, f.type , f.name) FROM FileDB f WHERE f.producto.id =:id")
+    ResImgIdDTO getIdImg(@Param("id")long id);
+
+    @Query("SELECT new back.dto.ResListImgDTO(f.producto,f.data ) FROM FileDB f ")
+    List<ResListImgDTO> getListaImg();
+
+
+
     
     
 }

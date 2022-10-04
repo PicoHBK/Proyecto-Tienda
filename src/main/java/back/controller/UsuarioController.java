@@ -60,7 +60,7 @@ public class UsuarioController {
         rol2.setUsuario(usuario);
 
         usuarioSer.cargarUser(usuario);
-       // rolSer.cargarRol(rol1);
+        rolSer.cargarRol(rol1);
         rolSer.cargarRol(rol2);
         return ResponseEntity.ok("Cargado");
     }
@@ -105,7 +105,7 @@ public class UsuarioController {
     logger.info("Datos de los Permisos {}", auth.getAuthorities());
     logger.info("Esta autenticado {}", auth.isAuthenticated());
 
-    return ResponseEntity.ok("test");
+    return ResponseEntity.ok(auth.getAuthorities());
   }
 
   @GetMapping("/test2")
@@ -115,7 +115,7 @@ public class UsuarioController {
     logger.info("Datos de los Permisos {}", auth.getAuthorities());
     logger.info("Esta autenticado {}", auth.isAuthenticated());
 
-    return ResponseEntity.ok("test2");
+    return ResponseEntity.ok(auth.getAuthorities());
   }
 
   @GetMapping("/test3")

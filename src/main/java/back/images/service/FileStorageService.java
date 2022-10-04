@@ -24,5 +24,6 @@ public interface FileStorageService {
     public void deleteByIdProducto(long id);
 
     public FileDB getImgProducto(long id);
+
     
 }
