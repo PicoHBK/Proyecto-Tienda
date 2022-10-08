@@ -17,9 +17,9 @@ public class ProductoSerImp implements ProductoSer{
 
     @Autowired
     private ProductoRepo productoRepo;
-    
-    
-    
+
+
+
 
     @Override
     public void borrarProducto(long id) {
@@ -45,7 +45,7 @@ public class ProductoSerImp implements ProductoSer{
     public List<Producto> getProductoNombreLike(String nombreLike) {
         return productoRepo.findByNombreIsContaining(nombreLike);
     }
-    
+
     // PARA TEST IGNORAR
     public ProductoSerImp (ProductoRepo repo){
         this.productoRepo = repo;
@@ -62,7 +62,7 @@ public class ProductoSerImp implements ProductoSer{
     @Override
     public List<ResListImgDTO> laverdad() {
         return productoRepo.getListaImgProductosLaVerdad();
-        
+
     }
 
     @Override
@@ -77,5 +77,10 @@ public class ProductoSerImp implements ProductoSer{
         return productoRepo.obetenerProductosBuscadoPage(name, page).getContent();
     }
 
-    
+    @Override
+    public ResListImgDTO obtenerDetails(long id) {
+        return productoRepo.obtenerPorId(id);
+    }
+
+
 }

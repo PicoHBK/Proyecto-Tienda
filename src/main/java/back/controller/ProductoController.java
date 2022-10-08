@@ -155,6 +155,13 @@ public class ProductoController {
   public ResponseEntity<FileDB> getImage(@PathVariable long id){
     return ResponseEntity.ok(storageService.getImgProducto(id));
   }
+
+
+  //OBTENER POR ID
+    @GetMapping("details/id/{id}")
+    public ResponseEntity<ResListImgDTO> details (@PathVariable long id) {
+        return  ResponseEntity.ok(productoSer.obtenerDetails(id));
+    }
     
     
     

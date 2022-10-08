@@ -32,6 +32,10 @@ public interface ProductoSer {
     //BUSQUEDA LIKE PAGINADO
 
     public List<ResListImgDTO> busquedaLikePaginado(String name, int page);
+
+    //BUSQUEDA POR ID
+
+    public ResListImgDTO obtenerDetails(long id );
     
 
 }

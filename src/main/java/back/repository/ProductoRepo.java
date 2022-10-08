@@ -31,6 +31,9 @@ public interface ProductoRepo extends JpaRepository<Producto, Long>{
     @Query("SELECT new back.dto.ResListImgDTO(p,p.image.data) FROM Producto p WHERE p.nombre LIKE %:name%")
     Page<ResListImgDTO> obetenerProductosBuscadoPage(@Param("name") String name,Pageable pageable);
 
+    @Query("SELECT new back.dto.ResListImgDTO(p,p.image.data) FROM Producto p WHERE p.id =:id")
+    ResListImgDTO obtenerPorId(@Param("id") long id);
+
     
 
     

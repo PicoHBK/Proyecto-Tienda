@@ -51,16 +51,16 @@ public class UsuarioController {
 
     @PostMapping("/cargarUsuario")
     public ResponseEntity<?> cargarUser (@RequestBody Usuario usuario) {
-        Rol rol1 = new Rol();
+       /* Rol rol1 = new Rol();
         rol1.setRol("ADMIN");
-        rol1.setUsuario(usuario);
+        rol1.setUsuario(usuario);*/
 
         Rol rol2 = new Rol();
         rol2.setRol("USER");
         rol2.setUsuario(usuario);
 
         usuarioSer.cargarUser(usuario);
-        rolSer.cargarRol(rol1);
+        //rolSer.cargarRol(rol1);
         rolSer.cargarRol(rol2);
         return ResponseEntity.ok("Cargado");
     }
